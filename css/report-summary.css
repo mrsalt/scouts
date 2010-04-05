@@ -1,0 +1,4 @@
+table.main { border-collapse: collapse; empty-cells: show; }
+td.header { color: black; font-weight: bold; font-size: 100%; border: 1px solid black; padding: 2px; }
+td.value { color: black; background-color: white; font-size: 70%; border: 1px solid black; padding: 2px;}
+td.yellow { color: black; font-size: 60%; border: 1px solid black; background-color: #FFFF53; padding: 2px; width: 15px; text-align: center; }
