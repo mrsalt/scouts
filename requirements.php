@@ -73,14 +73,27 @@ if (isset($_GET['action']))
 		echo '<?xml version="1.0" ?><xmlresponse><result>success</result></xmlresponse>';
 		exit;
 	}
-	else if ($_GET['action'] == 'save_notes')
+	else if ($_GET['action'] == 'update_my_notes')
 	{
 		if ($_POST['user_id'] != $_SESSION['USER_ID'])
 		{
 			echo 'You are no longer logged in.<br/>';
 			exit;
 		}
-		update_user_note($_POST['table'], $_POST['record_id'], $_POST['user_id'], $_POST['my_notes']);
+		if ($_POST['target'] == 'save')
+			update_user_note($_POST['table'], $_POST['record_id'], $_POST['user_id'], $_POST['my_notes']);
+		else if ($_POST['target'] == 'delete')
+			delete_user_note($_POST['table'], $_POST['record_id'], $_POST['user_id']);
+	}
+	else if ($_GET['action'] == 'delete_note')
+	{
+		if (!$_SESSION['USER_ID'])
+		{
+			echo 'You are no longer logged in.<br/>';
+			exit;		
+		}
+		// potential security -- check that user_id is someone in my troop
+		delete_user_note($_POST['table'], $_POST['record_id'], $_POST['user_id']);
 	}
 }
 
@@ -253,29 +266,17 @@ else if ($award_id or $_SESSION['req_view'] == 'troop_report_summary' or $_SESSI
 	}
 	
 	if ($_SESSION['USER_ID'] and $award_id != 'all')
-	{
-		$notes = get_user_note('award', $award_id, $is_scoutmaster ? null : $_SESSION['USER_ID']);	
+	{		
 		echo '</td></tr>';
 		echo '<tr><td>&nbsp;</td><td>';
 		echo '<div class="scout_report">';
 		
-		echo '<form method="POST" action="requirements.php?action=save_notes">';
-		echo 'My Notes:<br/>';
-		echo '<input type="hidden" name="user_id" value="'.$_SESSION['USER_ID'].'">';
-		echo '<input type="hidden" name="table" value="award">';
-		echo '<input type="hidden" name="record_id" value="'.$award_id.'">';
-		echo '<textarea rows=12 cols=65 name="my_notes" style="BACKGROUND-IMAGE: url(images/underline.gif)">';
-		echo format_user_note($notes, $_SESSION['USER_ID']);
-		echo '</textarea>'."\n";
-		echo '<br/><input type="submit" value="Save"><br/>';
+		echo get_my_notes($_SESSION['USER_ID'], 'requirements.php', 'award', $award_id);
 		
-		$other_notes = format_user_note($notes, null, $_SESSION['USER_ID']);
-		if ($other_notes)
+		if ($is_scoutmaster)
 		{
-			echo '<br/>Notes entered by other users:<br/>';
-			echo '<textarea rows=12 cols=65 name="other_notes" style="BACKGROUND-IMAGE: url(images/underline.gif)" disabled>';
-			echo $other_notes;
-			echo '</textarea>';
+			$user_notes_user_ids = array_field(fetch_array_data('SELECT id FROM user WHERE scout_troop_id = '.$GLOBALS['troop_id']), 'id');
+			echo get_others_notes($user_notes_user_ids, $_SESSION['USER_ID'], 'requirements.php', 'award', $award_id);
 		}
 		echo '</div>';
 	}

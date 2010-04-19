@@ -1,5 +1,8 @@
 <?php
-ini_set('include_path','.:/usr/local/lib/php:include:scouts/include');
+if (!get_cfg_var ( 'site_host_name' ))
+{
+	ini_set('include_path','.:/usr/local/lib/php:include:scouts/include');
+}
 require_once 'site_data.php';
 session_start();
 
@@ -42,7 +45,7 @@ function local_date($time_format, $server_time = null)
 
 function connect_db($database_name)
 {
-	if($database_name == 'scouts')
+	if ($database_name == 'scouts' and MYSQL_SERVER == 'db197.perfora.net')
 	{
 		$database_name = 'db127142764';
 	}

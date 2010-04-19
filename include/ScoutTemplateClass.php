@@ -69,7 +69,7 @@ class ScoutTemplate extends PageTemplate
 		PageTemplate::writeHead();
 		PageTemplate::startBody();
 
-		if(!$_GET['printpage'])
+		if(!array_key_exists('printpage',$_GET))
 		{
 			echo '<table cellspacing=0 cellpadding=0 width=100% style="border: 1px solid black;">';
 			//echo '<tr style="background-image: url(\'images/header_blank.jpg\'); background-repeat: repeat; width: 100%;">';

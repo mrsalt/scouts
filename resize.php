@@ -7,17 +7,16 @@ createthumb($filename,$x,$y);
 // Image Resize
 function createthumb($IMAGE_SOURCE,$THUMB_X,$THUMB_Y)
 {
-	preg_match('/\.(.*)/',$IMAGE_SOURCE,$match);
-	$type = strtolower($match[1]);
-	header('Content-type: ' .image_type_to_mime_type($type));
-  $IMAGE_PROPERTIES = GetImageSize($IMAGE_SOURCE);
-  if (!$IMAGE_PROPERTIES[2] == 2)
+	$IMAGE_PROPERTIES = GetImageSize($IMAGE_SOURCE);	
+	header('Content-type: ' .$IMAGE_PROPERTIES['mime']);
+  
+  if (!$IMAGE_PROPERTIES[2] == IMAGETYPE_GIF)
   {
-   return(0);
+     return(0);
   }
   else
   {
-  	if($type == 'jpg')
+  	if ($IMAGE_PROPERTIES['mime'] == 'image/jpeg')
   	{
    		$SRC_IMAGE = ImageCreateFromJPEG($IMAGE_SOURCE);
    	}
@@ -62,7 +61,7 @@ function createthumb($IMAGE_SOURCE,$THUMB_X,$THUMB_Y)
 //   echo 'x='.$THUMB_X.'<br>';
 //   echo 'y='.$THUMB_Y.'<br>';
 //   exit;
-if($type == 'png')
+if ($IMAGE_PROPERTIES['mime'] == 'image/png')
 {
 	$tpcolor = imagecolorat($SRC_IMAGE, 0, 0);
    // in the real world, you'd better test all four corners, not just one!

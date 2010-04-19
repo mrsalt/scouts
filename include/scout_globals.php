@@ -1,5 +1,9 @@
 <?php
-ini_set('include_path','.:/usr/local/lib/php:include');
+if (!get_cfg_var ( 'site_host_name' ))
+{
+	ini_set('include_path','.:/usr/local/lib/php:include');
+}
+
 require_once 'globals.php';
 
 //global $troop_id;

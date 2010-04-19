@@ -125,8 +125,8 @@ class PageTemplate
 		$columns = 0;
 		echo '<table style="position: relative; top: 4px; empty-cells: show;" cellspacing=0 cellpadding=2 width="100%">'."\n";
 		echo '<tr style="width: 100%;">'."\n";
-		echo '<td style="color: '.$bgColor.'; font-size: 1%; border-bottom: 1px solid black;">.</td>'."\n";// font-size/color hack to make empty-cells: show work in IE without border-collapse: collapse;
-		echo '<td style="color: '.$bgColor.'; font-size: 1%; border-bottom: 1px solid black;">.</td>'."\n";// font-size/color hack to make empty-cells: show work in IE without border-collapse: collapse;
+		echo '<td style="font-size: 1%; border-bottom: 1px solid black;">.</td>'."\n";// font-size/color hack to make empty-cells: show work in IE without border-collapse: collapse;
+		echo '<td style="font-size: 1%; border-bottom: 1px solid black;">.</td>'."\n";// font-size/color hack to make empty-cells: show work in IE without border-collapse: collapse;
 		$columns += 2;
 		foreach ($this->menu_links as $key => $link)
 		{

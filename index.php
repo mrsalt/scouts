@@ -2,10 +2,10 @@
 require_once 'include/scout_globals.php';
 require_once 'include/picture_functions.php';
 
-if($_SERVER['HTTP_HOST'] != 'boyscoutwebsite.com')
+if ($_SERVER['HTTP_HOST'] != SITE_URL)
 {
-	echo 'This page has moved to <a href="http://boyscoutwebsite.com">http://boyscoutwebsite.com</a>.  You will be redirected in 5 seconds.';
-	echo '<script>setTimeout( "window.location.href = \'http://boyscoutwebsite.com\'", 5*1000 );</script>';
+	echo 'This page has moved to <a href="http://'.SITE_URL.'">http://'.SITE_URL.'</a>.  You will be redirected in 5 seconds.';
+	echo '<script>setTimeout( "window.location.href = \'http://'.SITE_URL.'\'", 5*1000 );</script>';
 	exit;
 }
 
@@ -18,7 +18,7 @@ $pt->addStyleSheet('css/basic.css');
 $pt->writeBanner();
 $pt->writeMenu();
 
-if(isAdminUser($_SESSION['USER_ID']))
+if (array_key_exists('USER_ID', $_SESSION) and isAdminUser($_SESSION['USER_ID']))
 {
 	if($_GET['new_user_id'])
 	{
@@ -27,7 +27,7 @@ if(isAdminUser($_SESSION['USER_ID']))
 //	show_pending_users_table();
 }
 
-if($_SESSION['USER_ID'])
+if (array_key_exists('USER_ID', $_SESSION))
 {
 	$group_id = do_query('select group_id from user, user_group where user.id = user_group.user_id and user.id = '.$_SESSION['USER_ID'],'scouts');
 	if($group_id)
@@ -36,7 +36,7 @@ if($_SESSION['USER_ID'])
 	}
 }
 
-if($_SESSION['USER_ID'] and $group_id and count($picture_categories))
+if (array_key_exists('USER_ID', $_SESSION) and $group_id and count($picture_categories))
 {
 	$gallery = new PictureGallery($group_id, isUser('scoutmaster'), 'pictures', 'picture_categories', 'scout_picture_group', 'scouts');
 
@@ -53,7 +53,10 @@ else
 		echo '<hr />'."\n";
 		
 		 
-		$news_items = Array(Array('date' => 'March 14th, 2010',
+		$news_items = Array(Array('date' => 'April 11th, 2010',
+		                          'title' => 'User Notes Improved',
+		                          'info' => 'User notes on awards have been improved.  Only notes entered by the current troop are displayed.  A \'Delete\' button has been added to remove notes that are no longer relevant.<br/>-Mark'),
+							Array('date' => 'March 14th, 2010',
 		                          'title' => 'Merit Badge Requirements Updated',
 		                          'info' => 'BSA changes requirments from time to time.  The following merit badges had one or more requirements change in 2008-2009 and the site has been updated to reflect those changes: Architecture, Automotive Maintenance, Backpacking, Cinematography, Coin Collecting, Collections, Composite Materials (new in 2006 but missing from boyscoutwebsite.com until today), Drafting, Emergency Preparedness, Engineering, Farm Mechanics, First Aid, Graphic Arts, Hiking, Insect Study, Metalwork, Motorboating, Painting, Pottery, Radio, Sculpture, Swimming, Wilderness Survival, Water Sports.<br/>-Mark'));
 								  
