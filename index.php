@@ -53,7 +53,17 @@ else
 		echo '<hr />'."\n";
 		
 		 
-		$news_items = Array(Array('date' => 'April 11th, 2010',
+		$news_items = Array(Array('date' => 'April 25th, 2010',
+								  'title' => 'Rank Advancement Requirements Updated',
+								  'info' => '+ The Scout Rank Advancement was added.  <b>When you pass off a rank advancement for a boy you will see their rank revert to "No Rank" until you pass off the requirements for the Scout Rank Advancement.</b><br/>'.
+											'In order to bring the rank advancement requirements up to date, the following requirements were added:<br/>'.
+											'+ Using the EDGE method, teach another person how to tie the square knot.  (Tenderfoot req #4c)<br/>'.
+											'+ Discuss the principles of Leave No Trace.  (Second class req #2)<br/>'.
+											'+ Explain the three R\'s of personal safety and protection.  (Second Class req #9b)<br/>'.
+											'+ Describe the three things you should avoid doing related to the use of the Internet. Describe a cyberbully and how you should respond to one. (First Class req #11)<br/>'.
+											'+ While a Star Scout, use the EDGE method to teach a younger Scout the skills from ONE of the following six choices... (Life req #6)<br/>'.
+											'+ The wording in 24 other requirements was updated too.'),
+							Array('date' => 'April 11th, 2010',
 		                          'title' => 'User Notes Improved',
 		                          'info' => 'User notes on awards have been improved.  Only notes entered by the current troop are displayed.  A \'Delete\' button has been added to remove notes that are no longer relevant.<br/>-Mark'),
 							Array('date' => 'March 14th, 2010',

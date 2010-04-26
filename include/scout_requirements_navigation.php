@@ -101,7 +101,7 @@ function ShowRequirementsNavigationBar($can_add_awards, $can_edit_progress, $is_
 	if ($req_view == 'Rank Advancement' or $req_view == 'Merit Badge')
 	{
 		//i.e. can handle overflow-y, firefox can't...
-		echo '<div style="background: white; padding: 8px; overflow: auto; height: 300px; width: 210px;">'; // border: 1px solid black;
+		echo '<div style="background: white; padding: 8px; overflow: auto; height: 320px; width: 210px;">'; // border: 1px solid black;
 		if ($req_view == 'Rank Advancement' and $show_eagle_palms)
 		{
 			$awards = get_award_list('Eagle Palm');
