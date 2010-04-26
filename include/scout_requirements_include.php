@@ -111,17 +111,8 @@ function EraseAward($award_id, $user_id, $erased_by, &$error_msg)
 		}
 	}
 	else if ($award_data['type'] == 'Rank Advancement')
-	{		
-		$new_rank = 'Boy Scout';
-		for ($i = 1; $i <= 6; $i++)
-		{
-			if (do_query('SELECT user_id FROM user_award WHERE signed_by != 0 AND award_id = '.$i.' AND user_id = '.$user_id))
-				$new_rank = do_query('SELECT title FROM award WHERE id = '.$i);
-		}
-		$sql = "UPDATE user SET rank = '".$new_rank."' WHERE id = ".$user_id;
-		execute_query($sql,'scouts');
-		if ($GLOBALS['write_debug_log'])
-			write_log('EraseAward(), rank advancement removed, new user rank = '.$new_rank.', user id = '.$user_id);
+	{
+		UpdateRank($user_id);
 	}
 }
 
@@ -294,20 +285,27 @@ function SignOffAward($award_id, $user_id, $sign_date, $signed_by, &$error_msg)
 		}
 	}
 	else if ($award_data['type'] == 'Rank Advancement')
-	{		
-		$new_rank = 'Boy Scout';
-		for ($i = 1; $i <= 6; $i++)
-		{
-			if (do_query('SELECT user_id FROM user_award WHERE signed_by != 0 AND award_id = '.$i.' AND user_id = '.$user_id))
-				$new_rank = do_query('SELECT title FROM award WHERE id = '.$i);
-			else
-				break;
-		}
-		$sql = "UPDATE user SET rank = '".$new_rank."' WHERE id = ".$user_id;
-		execute_query($sql,'scouts');
-		if ($GLOBALS['write_debug_log'])
-			write_log('SignOffAward(), rank advancement completed, new user rank = '.$new_rank.', user id = '.$user_id);
+	{
+		UpdateRank($user_id);
 	}
+}
+
+function UpdateRank($user_id)
+{
+	$ranks_earned = fetch_array_data('SELECT award.title, rank_num FROM `user_award`, award WHERE user_id = '.$user_id.' AND user_award.award_id = award.id AND award.type = \'Rank Advancement\' AND user_award.signed_by != 0 ORDER BY award.rank_num', 'scouts', 'rank_num');
+	$new_rank = 'No Rank';
+	for ($i = 0; $i <= 6; $i++)
+	{
+		if (array_key_exists($i, $ranks_earned))
+			$new_rank = $ranks_earned[$i]['title'];
+		else
+			break;
+	}
+
+	$sql = "UPDATE user SET rank = '".$new_rank."' WHERE id = ".$user_id;
+	execute_query($sql,'scouts');
+	if ($GLOBALS['write_debug_log'])
+		write_log('UpdateRank(), rank advancement completed, new user rank = '.$new_rank.', user id = '.$user_id);
 }
 
 function CascadeRequirementSignOff($parent_id, $user_id, $signed_by, &$error_msg, $req_added)

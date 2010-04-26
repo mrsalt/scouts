@@ -53,16 +53,17 @@ function get_next_rank_id($rank_name)
 {
 	switch ($rank_name)
 	{
-		case 'Boy Scout': $next_rank = 'Tenderfoot'; break;
+		case 'No Rank': $next_rank = 'Scout'; break;
+		case 'Scout': $next_rank = 'Tenderfoot'; break;
 		case 'Tenderfoot': $next_rank = 'Second Class'; break;
-    case 'Second Class': $next_rank = 'First Class'; break;
-    case 'First Class': $next_rank = 'Star'; break;
-    case 'Star': $next_rank = 'Life'; break;
-    case 'Life': $next_rank = 'Eagle'; break;
-    case 'Eagle': $next_rank = ''; break;
+		case 'Second Class': $next_rank = 'First Class'; break;
+		case 'First Class': $next_rank = 'Star'; break;
+		case 'Star': $next_rank = 'Life'; break;
+		case 'Life': $next_rank = 'Eagle'; break;
+		case 'Eagle': $next_rank = ''; break;
   }
   
-  if ($next_rank){
+	if ($next_rank){
 		$sql = 'SELECT id FROM award WHERE type = \'Rank Advancement\' AND title = \''.$next_rank.'\' ORDER BY req_revision DESC LIMIT 1';
 		return do_query($sql,'scouts');
 	}

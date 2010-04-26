@@ -351,11 +351,11 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	         (isAdminUser() ? "<br /><input type=\"checkbox\" name=\"administrator\" value=\"administrator\"".($data['_administrator'] == 'T' ? ' checked' : '')."> Administrator" : "").
 	         "</td></tr>\n";
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>Name (required)</td><td><input type=\"text\" name=\"name\" value=\"".$data['name']."\"></td></tr>\n";
-	$text .= "<tr style=\"background: #DBE8E3;\"><td>Password</td><td><input type=\"password\" name=\"password\" value=\"\"></td></tr>\n";
+	$text .= "<tr style=\"background: #DBE8E3;\"><td width=\"240px\">Password<br><small><em>Entering a password and e-mail address are only necessary if this person will be able to login to this website.  If a login is created for a boy, this information can be shared with him and his parents and he will be able to view requirements but not pass them off.  This can be entered later.</em></small></td><td><input type=\"password\" name=\"password\" value=\"\"></td></tr>\n";
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>Repeat password</td><td><input type=\"password\" name=\"re_password\" value=\"\"></td></tr>\n";
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>E-mail</td><td><input type=\"text\" name=\"email\" value=\"".$data['email']."\"></td></tr>\n";
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>Phone</td><td><input type=\"text\" name=\"phone\" value=\"".$data['phone']."\"></td></tr>\n";
-	$text .= "<tr style=\"background: #DBE8E3;\"><td>Date of Birth</td><td>".
+	$text .= "<tr style=\"background: #DBE8E3;\"><td>Date of Birth (required)</td><td>".
 	            "<input type=\"text\" id=\"month\" name=\"month\" value=\"". ($data['dob'] ? date('n',strtotime($data['dob'])) : '')."\" size=\"2\" maxlength=\"2\">".
 	            " / <input type=\"text\" id=\"day\" name=\"day\" value=\"".  ($data['dob'] ? date('j',strtotime($data['dob'])) : '')."\" size=\"2\" maxlength=\"2\">".
 	            " / <input type=\"text\" id=\"year\" name=\"year\" value=\"".($data['dob'] ? date('Y',strtotime($data['dob'])) : '')."\" size=\"4\" maxlength=\"4\"></td></tr>\n";
@@ -366,6 +366,10 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	else
 		$group_id = 0;
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>Group</td><td>".ShowSelectList('group_id',$group_id,$groups).'</td></tr>';
+	
+	//Array('No Rank','Boy Scout','Tenderfoot','Second Class','First Class','Star','Life','Eagle','Leader','Parent')
+	//$text .= "<tr style=\"background: #DBE8E3;\"><td>Current Rank</td><td>".ShowSelectList('rank',$data['rank'],get_enums('user','rank')).'</td></tr>';
+	
 	$text .= "<tr style=\"background: #DBE8E3;\"><td colspan=\"2\">";
 	$text .= '<div id="youth_roles"><table style="color: black;"><tr><td>Responsibilities</td><td>Date Assigned</td></tr>';
 	$roles = fetch_array_data('SELECT * FROM roles WHERE youth_role = \'T\' ORDER BY id');

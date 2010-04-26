@@ -169,6 +169,9 @@ function get_modified_files_update_form()
 {
 	//$files = svn_get_files();
 	$files = md5_get_files();
+	if (count($files) == 0)
+		return 'All files are synchronized.';
+		
 	$text = '<form method="POST">';
 	/*$text .= 'Commit Message:<br/>';
 	$text .= '<textarea name="commit_msg" rows=8 cols=65></textarea><br/>';
