@@ -264,12 +264,12 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 				{
 					$award_id = get_next_rank_id($member['rank']);
 					if ($award_id)
-						$text .= "<a style=\"color: blue\" href=\"requirements.php?req_view=Rank Advancement&scout_id=".$member['id']."&award_id=".$award_id."\"><img src=\"images/b_edit.png\" border=0></a>";
+						$text .= "<a title=\"Pass off requirements\" style=\"color: blue\" href=\"requirements.php?req_view=Rank Advancement&scout_id=".$member['id']."&award_id=".$award_id."\"><img src=\"images/b_edit.png\" border=0></a>";
 				}
 				$text .= "</td>";
 			}
 			if ($make_names_links)
-				$text .= "<td><a style=\"color: blue\" href=\"membership.php?todo=edit member&id=".$member['id']."\">".$member['name']."</a></td>";
+				$text .= "<td><a style=\"color: blue\" title=\"Update membership info\" href=\"membership.php?todo=edit member&id=".$member['id']."\">".$member['name']."</a></td>";
 			else
 				$text .= "<td>".$member['name']."</td>";
 			if ($group_name == 'All Troop Members')

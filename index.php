@@ -27,7 +27,7 @@ if (array_key_exists('USER_ID', $_SESSION) and isAdminUser($_SESSION['USER_ID'])
 //	show_pending_users_table();
 }
 
-if (array_key_exists('USER_ID', $_SESSION))
+if (array_key_exists('USER_ID', $_SESSION) and $_SESSION['USER_ID'])
 {
 	$group_id = do_query('select group_id from user, user_group where user.id = user_group.user_id and user.id = '.$_SESSION['USER_ID'],'scouts');
 	if($group_id)
@@ -36,7 +36,7 @@ if (array_key_exists('USER_ID', $_SESSION))
 	}
 }
 
-if (array_key_exists('USER_ID', $_SESSION) and $group_id and count($picture_categories))
+if (array_key_exists('USER_ID', $_SESSION) and $_SESSION['USER_ID'] and $group_id and count($picture_categories))
 {
 	$gallery = new PictureGallery($group_id, isUser('scoutmaster'), 'pictures', 'picture_categories', 'scout_picture_group', 'scouts');
 

@@ -106,15 +106,8 @@ if(!$_GET['printpage'])
 }
 echo '<td valign="top">';
 
-if ($_SESSION['scout_id'])
-	$user_list = explode(',',$_SESSION['scout_id']);
-else
-	$user_list = Array();
-
 //pre_print_r('user list: '.$user_list);
 //pre_print_r($user_list);
-
-$users = fetch_array_data('SELECT * FROM user WHERE id IN ('.implode(',',$user_list).') ORDER BY name');
 
 if ($_SESSION['req_view'] == 'Rank Advancement')
 {
@@ -127,29 +120,35 @@ else
 	$title = 'Merit Badges';
 }
 
-$sql = 'SELECT * FROM award, user_award WHERE award.id = user_award.award_id AND user_id IN ('.implode(',',$user_list).')';
-//pre_print_r($sql);
-$user_award_data = fetch_array_data($sql);
-$award_data = Array();
-foreach ($user_award_data as $row)
-	$award_data[$row['award_id']][$row['user_id']] = $row;
-
-if($_GET['printpage'])
-{
-	echo '<script type="text/javascript">window.print();</script>';
-}
+if ($_SESSION['scout_id'])
+	$user_list = explode(',',$_SESSION['scout_id']);
 else
-{
-	echo '<a href="awards.php?printpage=1" target="_blank">Print Page</a>';//&nbsp;&nbsp;|&nbsp;&nbsp;';
-	//echo '<a href="requirements.php">Show Requirement Progress</a>';
-	echo '<br />';
-	
-}
+	$user_list = Array();
 
-ShowAwardTable($awards, $users, $award_data, $title, $is_scoutmaster, $allow_updates);
+if (count($user_list))
+{
+	if($_GET['printpage'])
+	{
+		echo '<script type="text/javascript">window.print();</script>';
+	}
+	else
+	{
+		echo '<a href="awards.php?printpage=1" target="_blank">Print Page</a>';//&nbsp;&nbsp;|&nbsp;&nbsp;';
+		//echo '<a href="requirements.php">Show Requirement Progress</a>';
+		echo '<br />';
+	}
+	$users = fetch_array_data('SELECT * FROM user WHERE id IN ('.implode(',',$user_list).') ORDER BY name');
+
+	$sql = 'SELECT * FROM award, user_award WHERE award.id = user_award.award_id AND user_id IN ('.implode(',',$user_list).')';
+	//pre_print_r($sql);
+	$user_award_data = fetch_array_data($sql);
+	$award_data = Array();
+	foreach ($user_award_data as $row)
+		$award_data[$row['award_id']][$row['user_id']] = $row;
+	ShowAwardTable($awards, $users, $award_data, $title, $is_scoutmaster, $allow_updates);
+}
 
 echo '</td></tr></table>';
-
 $pt->writeFooter();
 
 

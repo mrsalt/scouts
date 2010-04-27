@@ -10,9 +10,9 @@ $pt->writeBanner();
 $pt->writeMenu();
 connect_db('scouts');
 
-if (!isset($GLOBALS['troop_id']))
+if (!array_key_exists('USER_ID',$_SESSION) || !isset($GLOBALS['troop_id']) || !$GLOBALS['troop_id'])
 {
-	echo '<br><br>No Troop ID set.  Are you logged in?';
+	echo '<br><br>You must first log in to access this page.';
 	$pt->writeFooter();
 	exit;
 }
