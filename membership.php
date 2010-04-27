@@ -295,6 +295,16 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	echo "function changeRoles(youth_roles){\n";
 	echo "  document.getElementById('youth_roles').style.display = (youth_roles ? '' : 'none');\n";
 	echo "  document.getElementById('adult_roles').style.display = (youth_roles ? 'none' : '');\n";
+	echo "  document.getElementById('special_privileges_row').style.display = (youth_roles ? 'none' : '');\n";
+	echo "  if (youth_roles){\n";
+	echo "    document.getElementById('scoutmaster').checked = false;\n";
+	echo "    document.getElementById('parent').checked = false;\n";
+	echo "  }\n";
+	echo "}\n";
+	echo "function changeState(new_state){\n";
+	echo "  document.getElementById('pending_description').style.display = (new_state == 'pending' ? '' : 'none');\n";
+	echo "  document.getElementById('active_description').style.display = (new_state == 'active' ? '' : 'none');\n";
+	echo "  document.getElementById('blocked_description').style.display = (new_state == 'blocked' ? '' : 'none');\n";
 	echo "}\n";
 	echo '</script>';
 	echo '<form name="member_form" method="POST" action="membership.php" onSubmit="return validate_form(this);">';
@@ -345,9 +355,9 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	         "<input type=\"radio\" onClick=\"changeRoles(this.checked == false);\" name=\"youth_vs_adult\" value=\"adult\"".($data['_scout'] == 'T' ? '' : ' checked')."> Adult<br />".
 	         "</td></tr>";
 
-	$text .= "<tr style=\"background: #DBE8E3;\"><td width=\"240px\">Special Privileges<br><small><em>The scoutmaster privilege allows a user to do things a scoutmaster is able to do on the website, but does not give them the title (example: assistant scoutmaster should have this privilege).</em></small></td><td>".   
-	         "<input type=\"checkbox\" name=\"scoutmaster\" value=\"scoutmaster\"".($data['_scoutmaster'] == 'T' ? ' checked' : '')."> Scoutmaster".
-	         "<br /><input type=\"checkbox\" name=\"parent\" value=\"parent\"".($data['rank'] == 'Parent' ? ' checked' : '')."> Parent".
+	$text .= "<tr style=\"background: #DBE8E3;\" id=\"special_privileges_row\"><td width=\"240px\">Special Privileges<br><small><em>The scoutmaster privilege allows a user to do things a scoutmaster is able to do on the website, but does not give them the title (example: assistant scoutmaster should have this privilege).</em></small></td><td>".   
+	         "<input type=\"checkbox\" id=\"scoutmaster\" name=\"scoutmaster\" value=\"scoutmaster\"".($data['_scoutmaster'] == 'T' ? ' checked' : '')."> Scoutmaster".
+	         "<br /><input type=\"checkbox\" id=\"parent\" name=\"parent\" value=\"parent\"".($data['rank'] == 'Parent' ? ' checked' : '')."> Parent".
 	         (isAdminUser() ? "<br /><input type=\"checkbox\" name=\"administrator\" value=\"administrator\"".($data['_administrator'] == 'T' ? ' checked' : '')."> Administrator" : "").
 	         "</td></tr>\n";
 	$text .= "<tr style=\"background: #DBE8E3;\"><td>Name (required)</td><td><input type=\"text\" name=\"name\" value=\"".$data['name']."\"></td></tr>\n";
@@ -390,17 +400,18 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	}
 	$text .= '</table></div>';
 	$text .= '</td></tr>';
-	$text .= "<tr style=\"background: #DBE8E3;\"><td>State</td><td>".
-	         "<input type=\"radio\" name=\"state\" value=\"pending\"".($data['state'] == 'pending' ? ' checked' : '')."> Pending<br />".
-	         "<input type=\"radio\" name=\"state\" value=\"active\"".($data['state'] == 'active' ? ' checked' : '')."> Active<br />".
-	         "<input type=\"radio\" name=\"state\" value=\"blocked\"".($data['state'] == 'blocked' ? ' checked' : '')."> Blocked".
+	$text .= "<tr style=\"background: #DBE8E3;\"><td width=\"240px\">State<br><small><em><span id=\"pending_description\" style=\"display: none\">Pending - User has registered for access to this troop but has not yet been approved access by someone with authority to grant access (Scoutmaster privilege has to be assigned.  See special privileges above.)</span><span id=\"active_description\" style=\"display: none\">Active - User is current member in troop and can login to site (if e-mail address and password are set).</span><span id=\"blocked_description\" style=\"display: none\">Blocked - User is no longer active with troop, has completed their scouting, has moved away, or for whatever reason is no longer part of the troop.</span></td><td>".
+	         "<input type=\"radio\" name=\"state\" value=\"pending\"".($data['state'] == 'pending' ? ' checked' : '')." onclick=\"changeState('pending')\"> Pending<br />".
+	         "<input type=\"radio\" name=\"state\" value=\"active\"".($data['state'] == 'active' ? ' checked' : '')." onclick=\"changeState('active')\"> Active<br />".
+	         "<input type=\"radio\" name=\"state\" value=\"blocked\"".($data['state'] == 'blocked' ? ' checked' : '')." onclick=\"changeState('blocked')\"> Blocked".
 	         "</td></tr>\n";
 	$text .= "</table></td></tr>";
 	$text .= '<tr><td colspan="2" align="center"><input type="submit" value="Submit">&nbsp;&nbsp;&nbsp;<input type="button" value="Cancel" onClick="location=\'membership.php\'"></td></tr>';
 	$text .= "</table>";
 	echo $text;
 	echo "<script type=\"text/javascript\">\n";
-	echo "changeRoles(".($data['_scout'] == 'F' ? ' false' : 'true').")\n";
+	echo "changeRoles(".($data['_scout'] == 'F' ? ' false' : 'true').");\n";
+	echo "changeState('".$data['state']."');\n";
 	echo "</script>\n";
 	echo '<input type="hidden" name="pass_hash" value="">';
 	echo '<input type="hidden" name="target" value="add_edit_member">';
