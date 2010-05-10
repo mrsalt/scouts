@@ -85,10 +85,16 @@ class ScoutTemplate extends PageTemplate
 			if (isset($_SESSION['USER_ID']) and file_exists($troop_image_file))
 				echo '<td><img src="'.$troop_image_file.'" border="0" id="header_image" /></td>';
 			else
+			{
 				echo '<td><img src="images/scout_header_general.jpg" border="0" id="header_image" /></td>';
+				//echo '<td width="100%" style="background-image: url(\'images/scout_header_general_repeat.jpg\');" />&nbsp;</td>';
+				//echo '<td width="100%" style="border: 1px solid red; background: yellow;" />&nbsp;</td>';
+				echo '<td width="100%" style="background: #0E191B;" />&nbsp;</td>';
+			}
 			//echo '<td><img src="images/website.jpg" border="0">';
 			//echo '<div style="position: relative; top:30; left:10;"><a href="javascript: toggle_image_cycle();" id="cycle_image_link" style="font-size: 8pt;">Stop Animation</a></div>';
 			//echo '</td>';
+
 			echo '</tr></table>';
 		}
 	}

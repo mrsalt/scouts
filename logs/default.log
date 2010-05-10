@@ -1,0 +1,486 @@
+127.0.0.1|2010-04-11 10:51 AM|  UPDATE user_note SET notes = 'This is just a test...  adding to it.', date_updated = NOW() WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 10:54 AM|  UPDATE user_note SET notes = 'This is just a test...  adding to it.', date_updated = NOW() WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 10:54 AM|  UPDATE user_note SET notes = 'This is just a test...  adding to it.', date_updated = NOW() WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 10:58 AM|  UPDATE user_note SET notes = 'This is just a test...  adding to it.', date_updated = NOW() WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 10:58 AM|  UPDATE user_note SET notes = 'This is just a test...  adding to it.  Here\'s more.', date_updated = NOW() WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 11:07 AM|  DELETE FROM user_note WHERE table_name = 'award' AND record_id = 1 AND user_id = 1
+127.0.0.1|2010-04-11 11:19 AM|  DELETE FROM user_note WHERE table_name = 'award' AND record_id = 1 AND user_id = 309
+127.0.0.1|2010-04-25 06:33 PM|  DELETE FROM user_note WHERE table_name = 'award' AND record_id = 6 AND user_id = 370
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7181, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7181,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7182, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7182,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7183, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7183,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7184, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7184,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7185, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7185,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7186, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7186,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7187, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7187,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7188, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7188,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7189, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7189,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|signing off requirement (req_id=7190, user_id=547)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7190,0)
+127.0.0.1|2010-04-25 06:37 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 06:37 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 06:37 PM|  INSERT INTO user_award(signed_date, signed_by, user_id, award_id) VALUES('2010-04-25',1,547,280)
+127.0.0.1|2010-04-25 09:18 PM|erasing requirement (req_id=7181, user_id=547)
+127.0.0.1|2010-04-25 09:18 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 7181
+127.0.0.1|2010-04-25 09:18 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:18 PM|calling erase award(award_id=280, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:18 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:21 PM|signing off requirement (req_id=7181, user_id=547)
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 7181
+127.0.0.1|2010-04-25 09:21 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:21 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:21 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:21 PM|erasing requirement (req_id=7187, user_id=547)
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 7187
+127.0.0.1|2010-04-25 09:21 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:21 PM|calling erase award(award_id=280, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:21 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:21 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:22 PM|signing off requirement (req_id=7187, user_id=547)
+127.0.0.1|2010-04-25 09:22 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 7187
+127.0.0.1|2010-04-25 09:22 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:22 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:22 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:22 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:22 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:23 PM|erasing requirement (req_id=7184, user_id=547)
+127.0.0.1|2010-04-25 09:23 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 7184
+127.0.0.1|2010-04-25 09:23 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:23 PM|calling erase award(award_id=280, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:23 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:24 PM|signing off requirement (req_id=7184, user_id=547)
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 7184
+127.0.0.1|2010-04-25 09:24 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:24 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:24 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:24 PM|erasing requirement (req_id=7182, user_id=547)
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 7182
+127.0.0.1|2010-04-25 09:24 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:24 PM|calling erase award(award_id=280, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user SET rank = 'No Rank' WHERE id = 547
+127.0.0.1|2010-04-25 09:24 PM|UpdateRank(), rank advancement completed, new user rank = No Rank, user id = 547
+127.0.0.1|2010-04-25 09:24 PM|signing off requirement (req_id=7182, user_id=547)
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 7182
+127.0.0.1|2010-04-25 09:24 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:24 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:24 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:24 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=50, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,50,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=51, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,51,0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=49, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,49,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=7192, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7192,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=53, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,53,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=54, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,54,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=55, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,55,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=56, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,56,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=57, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,57,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=58, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,58,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=59, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,59,0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=52, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,52,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=60, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,60,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=61, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,61,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=62, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,62,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=64, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,64,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=65, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,65,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=66, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,66,0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=63, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,63,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=68, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,68,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=69, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,69,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=70, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,70,0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=67, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,67,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=7193, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7193,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=7194, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7194,0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=71, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,71,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=7195, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7195,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=72, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,72,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=73, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,73,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|signing off requirement (req_id=74, user_id=547)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,74,0)
+127.0.0.1|2010-04-25 09:25 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:25 PM|calling sign off award(award_id=2, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:25 PM|  INSERT INTO user_award(signed_date, signed_by, user_id, award_id) VALUES('2010-04-25',1,547,2)
+127.0.0.1|2010-04-25 09:25 PM|  UPDATE user SET rank = 'Second Class' WHERE id = 547
+127.0.0.1|2010-04-25 09:25 PM|UpdateRank(), rank advancement completed, new user rank = Second Class, user id = 547
+127.0.0.1|2010-04-25 09:32 PM|erasing requirement (req_id=50, user_id=547)
+127.0.0.1|2010-04-25 09:32 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 50
+127.0.0.1|2010-04-25 09:32 PM|erasing requirement (req_id=49, user_id=547)
+127.0.0.1|2010-04-25 09:32 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 49
+127.0.0.1|2010-04-25 09:32 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:32 PM|calling erase award(award_id=2, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:32 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 2
+127.0.0.1|2010-04-25 09:33 PM|signing off requirement (req_id=50, user_id=547)
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 50
+127.0.0.1|2010-04-25 09:33 PM|signing off requirement (req_id=49, user_id=547)
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 49
+127.0.0.1|2010-04-25 09:33 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:33 PM|calling sign off award(award_id=2, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 2
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:33 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:33 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:33 PM|erasing requirement (req_id=7182, user_id=547)
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 7182
+127.0.0.1|2010-04-25 09:33 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:33 PM|calling erase award(award_id=280, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:33 PM|  UPDATE user SET rank = 'No Rank' WHERE id = 547
+127.0.0.1|2010-04-25 09:33 PM|UpdateRank(), rank advancement completed, new user rank = No Rank, user id = 547
+127.0.0.1|2010-04-25 09:34 PM|erasing requirement (req_id=54, user_id=547)
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 54
+127.0.0.1|2010-04-25 09:34 PM|erasing requirement (req_id=52, user_id=547)
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_req SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND req_id = 52
+127.0.0.1|2010-04-25 09:34 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:34 PM|calling erase award(award_id=2, user_id=547, signed_by=1
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_award SET signed_date = '0000-00-00', signed_by = 0 WHERE user_id = 547 AND award_id = 2
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user SET rank = 'No Rank' WHERE id = 547
+127.0.0.1|2010-04-25 09:34 PM|UpdateRank(), rank advancement completed, new user rank = No Rank, user id = 547
+127.0.0.1|2010-04-25 09:34 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:34 PM|signing off requirement (req_id=54, user_id=547)
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 54
+127.0.0.1|2010-04-25 09:34 PM|signing off requirement (req_id=52, user_id=547)
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 52
+127.0.0.1|2010-04-25 09:34 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:34 PM|calling sign off award(award_id=2, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 2
+127.0.0.1|2010-04-25 09:34 PM|  UPDATE user SET rank = 'No Rank' WHERE id = 547
+127.0.0.1|2010-04-25 09:34 PM|UpdateRank(), rank advancement completed, new user rank = No Rank, user id = 547
+127.0.0.1|2010-04-25 09:34 PM|CascadeAwardSignOff(award_id=2, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 2 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=7182, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  UPDATE user_req SET signed_date = '2010-04-25', signed_by = 1, merit_badge_id = 0 WHERE user_id = 547 AND req_id = 7182
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=280, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|calling sign off award(award_id=280, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:38 PM|  UPDATE user_award SET signed_date = '2010-04-25', signed_by = 1 WHERE user_id = 547 AND award_id = 280
+127.0.0.1|2010-04-25 09:38 PM|  UPDATE user SET rank = 'Scout' WHERE id = 547
+127.0.0.1|2010-04-25 09:38 PM|UpdateRank(), rank advancement completed, new user rank = Scout, user id = 547
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=1, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,1,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=2, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,2,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=3, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,3,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=29, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,29,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=30, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,30,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=7191, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,7191,0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=28, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,28,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=31, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,31,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=32, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,32,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=33, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,33,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=34, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,34,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=35, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,35,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=37, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,37,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=38, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,38,0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=36, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,36,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=39, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,39,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=41, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,41,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=42, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,42,0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=40, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,40,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=43, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,43,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=44, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,44,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|signing off requirement (req_id=45, user_id=547)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,547,45,0)
+127.0.0.1|2010-04-25 09:38 PM|CascadeAwardSignOff(award_id=1, user_id=547, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 547) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 09:38 PM|calling sign off award(award_id=1, user_id=547, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 09:38 PM|  INSERT INTO user_award(signed_date, signed_by, user_id, award_id) VALUES('2010-04-25',1,547,1)
+127.0.0.1|2010-04-25 09:38 PM|  UPDATE user SET rank = 'Second Class' WHERE id = 547
+127.0.0.1|2010-04-25 09:38 PM|UpdateRank(), rank advancement completed, new user rank = Second Class, user id = 547
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=1, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,1,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=2, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,2,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=3, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,3,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=29, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,29,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=30, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,30,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=7191, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,7191,0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=28, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,28,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=31, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,31,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=32, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,32,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=33, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,33,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=34, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,34,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=35, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,35,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=37, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,37,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=38, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,38,0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=36, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,36,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=39, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,39,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=41, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,41,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=42, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,42,0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=40, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,40,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=43, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,43,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=44, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,44,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|signing off requirement (req_id=45, user_id=360)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-25',1,360,45,0)
+127.0.0.1|2010-04-25 10:12 PM|CascadeAwardSignOff(award_id=1, user_id=360, signed_by=1), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 360) WHERE requirement.parent_id = 0 AND requirement.award_id = 1 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-25 10:12 PM|calling sign off award(award_id=1, user_id=360, signed_by=1, sign_date=2010-04-25)
+127.0.0.1|2010-04-25 10:12 PM|  INSERT INTO user_award(signed_date, signed_by, user_id, award_id) VALUES('2010-04-25',1,360,1)
+127.0.0.1|2010-04-25 10:12 PM|  UPDATE user SET rank = 'No Rank' WHERE id = 360
+127.0.0.1|2010-04-25 10:12 PM|UpdateRank(), rank advancement completed, new user rank = No Rank, user id = 360
+127.0.0.1|2010-04-26 11:33 PM|signing off requirement (req_id=7181, user_id=549)
+127.0.0.1|2010-04-26 11:33 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-26',548,549,7181,0)
+127.0.0.1|2010-04-26 11:33 PM|CascadeAwardSignOff(award_id=280, user_id=549, signed_by=548), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 549) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)
+127.0.0.1|2010-04-26 11:33 PM|signing off requirement (req_id=7182, user_id=549)
+127.0.0.1|2010-04-26 11:33 PM|  INSERT INTO user_req(signed_date, signed_by, user_id, req_id, merit_badge_id) VALUES('2010-04-26',548,549,7182,0)
+127.0.0.1|2010-04-26 11:33 PM|CascadeAwardSignOff(award_id=280, user_id=549, signed_by=548), checking for missing requirements.
+  sql=SELECT COUNT(*) FROM requirement LEFT JOIN user_req ON (requirement.id = user_req.req_id AND user_req.user_id = 549) WHERE requirement.parent_id = 0 AND requirement.award_id = 280 AND requirement.req_type != 'Comment' AND (user_req.req_id IS NULL OR user_req.signed_by = 0)

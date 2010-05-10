@@ -198,17 +198,32 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 {
 	if(!$group_name)
 		$group_name = 'All Troop Members';
+	
 	if ($group_name == 'All Troop Members')
-		$sql = 'SELECT * FROM user WHERE scout_troop_id = '.$troop_id . ' AND (_scout = \'T\' OR _scoutmaster = \'T\') order by _administrator asc, _scoutmaster asc, _scout desc, name asc';
+	{
+		$sql = 'SELECT * FROM user WHERE scout_troop_id = '.$troop_id . ' AND (_scout = \'T\' OR _scoutmaster = \'T\')';
+	}
 	else if ($group_name == 'Other')
-		$sql = 'SELECT * FROM user WHERE scout_troop_id = '.$troop_id . ' AND (_scout = \'F\' AND _scoutmaster = \'F\') order by _administrator asc, _scoutmaster asc, _scout desc, name asc';
+	{
+		$sql = 'SELECT * FROM user WHERE scout_troop_id = '.$troop_id . ' AND (_scout = \'F\' AND _scoutmaster = \'F\')';
+	}
 	else
-		$sql = 'SELECT user.* FROM user, user_group, scout_group WHERE user.id = user_id AND group_name = \''.$group_name.'\' AND troop_id = '.$troop_id.' AND scout_group.id = user_group.group_id order by _administrator asc, _scoutmaster asc, _scout desc, name asc';
+	{
+		$sql = 'SELECT user.* FROM user, user_group, scout_group WHERE user.id = user_id AND group_name = \''.$group_name.'\' AND troop_id = '.$troop_id.' AND scout_group.id = user_group.group_id';
+	}
+
+	$sql .= ' ORDER BY _administrator asc, _scoutmaster asc, _scout desc, name asc';
+		 
 	//pre_print_r($sql);
 	//pre_print_r(
 	$members = fetch_array_data($sql,'scouts');
 	
-	$text .= "<table class=\"scout_form\" cellpadding=\"10\" cellspacing=\"0\" style=\"font-size: smaller;\">\n";
+	return get_member_table($members, $troop_id, $group_name, $make_names_links, $show_blocked_users);
+}
+
+function get_member_table($members, $troop_id, $group_name, $make_names_links = true, $show_blocked_users = false)
+{
+	$text = "<table class=\"scout_form\" cellpadding=\"10\" cellspacing=\"0\" style=\"font-size: smaller;\">\n";
 	//$text .= "<tbody style=\"border: 1px solid black;\">\n";
 	$text .= "<tr>".($make_names_links ? '<td></td>':'')."<td>Name</td>";
 	$text .= ($group_name == 'All Troop Members' ? "<td>Member Of</td>" : '');
@@ -236,17 +251,7 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 					continue;
 				}
 			}
-			$sql = 'SELECT group_name '.
-			       'FROM scout_group, user_group '.
-			       'WHERE user_group.user_id = '.$member['id'].
-			       ' AND user_group.group_id = scout_group.id';
-			$groups = fetch_array_data($sql,'scouts');
-			$sql = 'SELECT title '.
-			       'FROM roles, scout_role '.
-			       'WHERE scout_role.user_id = '.$member['id'].
-			       ' AND active_role = \'T\''.
-			       ' AND scout_role.role_id  = roles.id';
-			$roles  = array_field(fetch_array_data($sql,'scouts'),'title');
+
 			if($member['_administrator'] == 'T')
 				$text .= "<tr style=\"background: #98A5FC;\">";
 			else if($member['_scoutmaster'] == 'T')
@@ -256,7 +261,7 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 			else
 				$text .= "<tr style=\"background: #DBE8E3;\">";
 			
-			//http://boyscoutwebsite.com/
+			/********** Name Column ************************/
 			if ($make_names_links)
 			{
 				$text .= "<td>";
@@ -272,8 +277,16 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 				$text .= "<td><a style=\"color: blue\" title=\"Update membership info\" href=\"membership.php?todo=edit member&id=".$member['id']."\">".$member['name']."</a></td>";
 			else
 				$text .= "<td>".$member['name']."</td>";
+
+			/********** Age Group Column ************************/				
 			if ($group_name == 'All Troop Members')
 			{
+				$sql = 'SELECT group_name '.
+					   'FROM scout_group, user_group '.
+					   'WHERE user_group.user_id = '.$member['id'].
+					   ' AND user_group.group_id = scout_group.id';
+				$groups = fetch_array_data($sql,'scouts');
+
 				$text .= "<td>";
 				$sep = '';
 				if (count($groups))
@@ -286,15 +299,22 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 				}
 				$text .= "</td>";
 			}
-			
+
+			/********** Rank Column ************************/			
 			if ($member['rank'] == 'Leader' and isAdminUser($member['id']))
 				$text .= "<td>Administrator</td>";
 			else
 				$text .= "<td>".$member['rank']."</td>";
 			
+			/********** Responsibility/Role Column ************************/
 			$text .= "<td>";
 			$sep = '';
-			
+			$sql = 'SELECT title '.
+			       'FROM roles, scout_role '.
+			       'WHERE scout_role.user_id = '.$member['id'].
+			       ' AND active_role = \'T\''.
+			       ' AND scout_role.role_id  = roles.id';
+			$roles  = array_field(fetch_array_data($sql,'scouts'),'title');			
 			if(is_array($roles))
 			{
 				$roles = array_unique($roles);
@@ -305,10 +325,18 @@ function get_members($troop_id, $group_name, $make_names_links = true, $show_blo
 				}
 			}
 			$text .= "</td>";
-			$text .= "<td>".((date('M d, Y',strtotime($member['dob'])) != 'Dec 30, 1969') ? date('M d, Y',strtotime($member['dob'])) : '').'</td>';//
+			
+			/********** Birthday Column ************************/
+			$text .= "<td>".((date('M d, Y',strtotime($member['dob'])) != 'Dec 30, 1969') ? date('M d, Y',strtotime($member['dob'])) : '').'</td>';
+			
+			/********** Phone Column ************************/
 			$text .= "<td>".$member['phone']."</td>";
-			if ($make_names_links){
+			
+			if ($make_names_links)
+			{
+				/********** State Column ************************/
 				$text .= "<td><span style=\"color: ".get_state_color($member['state']).";\">".$member['state']."</span></td>";
+				/********** Last Login Column ************************/
 				$text .= "<td>".$member['last_login']."</td>";
 			}
 			$text .= "</tr>\n";
@@ -340,6 +368,23 @@ function get_state_color($state)
 		return $colors[$state];
 	}
 	return 'black';
+}
+
+function get_patrol_type_names($group_name)
+{
+	switch ($group_name)
+	{
+		case '11 Year Old Scouts':
+			return Array('Patrol');
+		case '12-13 Year Old Scouts':
+			return Array('Patrol');
+		case '14-15 Year Old Scouts':
+			return Array('Team');
+		case '16-18 Year Old Scouts':
+			return Array('Crew');
+		case '14-18 Year Old Scouts':
+			return Array('Team','Crew');
+	}
 }
 
 ?>

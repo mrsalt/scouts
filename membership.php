@@ -43,6 +43,64 @@ if (count($_POST))
 				delete_troop_group($troop_id, $group_name);
 		}
 	}
+	else if ($_POST['target'] == 'add_edit_patrol')
+	{
+		if (strlen(trim($_POST['patrol_name'])) == 0)
+		{
+			echo 'Error, '.$_POST['patrol_type'].' name cannot be blank.';
+		}
+		else
+		{
+			if (array_key_exists('patrol_id', $_POST))
+			{
+				$sql = 'UPDATE scout_patrol SET name = \''.addslashes($_POST['patrol_name']).'\' WHERE id = '.$_POST['patrol_id'];
+				execute_query($sql, 'scouts');
+				$patrol_id = $_POST['patrol_id'];
+			}
+			else
+			{
+				$sql = 'INSERT INTO scout_patrol (group_id, name, type) VALUES('.$_POST['group_id'].', \''.addslashes($_POST['patrol_name']).'\', \''.$_POST['patrol_type'].'\')';
+				execute_query($sql);
+				$patrol_id = mysql_insert_id();
+			}
+			
+			$users_in_patrol_list = '';
+			$insert_list = '';
+			$sep = '';
+			if (array_key_exists('user', $_POST))
+			{
+				foreach ($_POST['user'] as $user_id)
+				{
+					$users_in_patrol_list .= $sep . $user_id;
+					$insert_list .= $sep . '('.$user_id.','.$patrol_id.')';
+					$sep = ',';
+				}
+			}
+			$sql = 'DELETE FROM scout_patrol_member WHERE patrol_id = '.$patrol_id;
+			if ($users_in_patrol_list != '')
+				$sql .= ' OR user_id IN ('.$users_in_patrol_list.')';		
+			execute_query($sql);
+			if ($insert_list != '')
+			{
+				$sql = 'INSERT INTO scout_patrol_member(user_id, patrol_id) VALUES '.$insert_list;
+				execute_query($sql);
+			}
+			
+			$patrol = fetch_data('SELECT * FROM scout_patrol WHERE id = '.$patrol_id,'scouts');
+			$_GET['todo'] = 'patrol_roster';
+			$_GET['type'] = $patrol['type'];
+			$_GET['group_id'] = $patrol['group_id'];
+			$_GET['id'] = $patrol_id;
+			$_GET['name'] = $patrol['name'];
+		}
+	}
+	else if ($_POST['target'] == 'delete_patrol')
+	{
+		$sql = 'DELETE FROM scout_patrol_member WHERE patrol_id = '.$_POST['patrol_id'];
+		execute_query($sql);
+		$sql = 'DELETE FROM scout_patrol WHERE id = '.$_POST['patrol_id'];
+		execute_query($sql);
+	}
 	else if ($_POST['target'] == 'add_edit_member')
 	{
 		// validate that no one with the same name exists within this troop
@@ -109,29 +167,22 @@ if (count($_POST))
 				$sql = 'INSERT INTO user SET '.$query;
 			else
 				$sql = 'UPDATE user SET '.$query.' WHERE id = '.$_POST['id'];
-			if (!mysql_query($sql))
-			{
-				die('Query Failed!  error='.mysql_error()."\nsql=".$sql);	
-			}
+			execute_query($sql);
 			$id = ($_POST['id'] ? $_POST['id'] : mysql_insert_id());
 			if($_POST['group_id'])
 			{
 				$group_id = do_query('select group_id from user_group where user_id = '.$id,'scouts');
 				if(!$group_id)
 				{
-					$sql = 'insert into user_group set user_id = '.$id.', group_id = '.$_POST['group_id'];
-					if (!mysql_query($sql))
-					{
-						die('Query Failed!  error='.mysql_error()."\nsql=".$sql);	
-					}
+					$sql = 'INSERT INTO user_group set user_id = '.$id.', group_id = '.$_POST['group_id'];
+					execute_query($sql);
 				}
-				else if($group_id != $_POST['group_id'])
+				else if ($group_id != $_POST['group_id'])
 				{
-					$sql = 'update user_group set group_id = '.$_POST['group_id'].' where user_id = '.$id;
-					if (!mysql_query($sql))
-					{
-						die('Query Failed!  error='.mysql_error()."\nsql=".$sql);	
-					}
+					$sql = 'UPDATE user_group set group_id = '.$_POST['group_id'].' where user_id = '.$id;
+					execute_query($sql);
+					$sql = 'DELETE FROM scout_patrol_member WHERE user_id = '.$id;
+					execute_query($sql);
 				}
 			}
 			$sql = 'SELECT * FROM scout_role WHERE user_id = '.$id;
@@ -187,14 +238,18 @@ if (!isset($_SESSION['membership_view']))
 		$_SESSION['membership_view'] =  do_query('select group_name from scout_group, user_group where scout_group.id = user_group.group_id and user_id = '.$_SESSION['USER_ID'],'scouts');
 	}
 }
-//$all_troop_groups = get_enums($table_name = 'scout_group', $field_name = 'group_name');
-$all_troop_groups = array_field(fetch_array_data('SELECT group_name FROM scout_group WHERE troop_id = '.$troop_id,'scouts'),'group_name');
-//pre_print_r($all_troop_groups);
-if(is_array($all_troop_groups))
-	sort($all_troop_groups);
-else
-	$all_troop_groups = Array();
-$membership_views = array_merge(Array('All Troop Members'), $all_troop_groups, Array('Other'), Array('Edit Groups'));
+
+$troop_groups = fetch_array_data('SELECT id, group_name FROM scout_group WHERE troop_id = '.$troop_id.' ORDER BY group_name','scouts','id');
+$group_names = array_field($troop_groups,'group_name');
+
+if (!is_array($group_names))
+	$group_names = Array();
+
+$membership_views = array_merge(Array('All Troop Members'), $group_names, Array('Other'), Array('Edit Age Groups'));
+
+if (count($group_names) > 0)
+	$membership_views = array_merge($membership_views, Array('Patrols'));
+
 echo '<br>';
 $sep = '';
 foreach ($membership_views as $view)
@@ -419,7 +474,7 @@ if ($_GET['todo'] == 'add member' or $_GET['todo'] == 'edit member')
 	echo '</form>';
 	echo '</div>';
 }
-else if ($_SESSION['membership_view'] == 'Edit Groups')
+else if ($_SESSION['membership_view'] == 'Edit Age Groups')
 {
 	echo '<div style="margin: 25px;">';
 	echo '<form method="POST">';
@@ -428,6 +483,142 @@ else if ($_SESSION['membership_view'] == 'Edit Groups')
 	echo '<input type="submit" value="Submit">';
 	echo '</form>';
 	echo '</div>';
+}
+else if ($_SESSION['membership_view'] == 'Patrols')
+{
+	// Patrol / Team / Crew [                  ]
+	//   or Patrol :  No Patrols created yet
+	// Add Patrol / Team / Crew
+	echo '<br/><br/>';
+	echo '<table><tr><td valign=top>';
+	echo '<table cellpadding=5 style="background: white;">';
+	foreach ($troop_groups as $group)
+	{
+		echo '<tr style="font-weight: bold; color: white; background: black"><td>'.$group['group_name'].'</td></tr>';
+		$patrol_types = get_patrol_type_names($group['group_name']);
+		foreach ($patrol_types as $pt_name)
+		{
+			echo '<tr style="color: white; background: gray"><td>'.$pt_name.'s</td></tr>';
+			$sql = 'SELECT scout_patrol.*, COUNT(scout_patrol_member.user_id) AS patrol_count FROM scout_patrol LEFT JOIN scout_patrol_member ON (scout_patrol.id = scout_patrol_member.patrol_id) WHERE scout_patrol.group_id = '.$group['id'].' AND scout_patrol.type = \''.$pt_name.'\' GROUP BY scout_patrol.id ORDER BY name';
+			$patrols = fetch_array_data($sql, 'scouts');
+			foreach ($patrols as $patrol)
+			{
+				echo '<tr><td style="color: black">';
+				if ($_GET['todo'] == 'patrol_roster' and $_GET['id'] == $patrol['id'])
+					echo $patrol['name'].' ('.$patrol['patrol_count'].' boy'.($patrol['patrol_count']==1?'':'s').')';
+				else
+					echo '<a href="membership.php?membership_view=Patrols&type='.$pt_name.'&group_id='.$group['id'].'&id='.$patrol['id'].'&name='.$patrol['name'].'&todo=patrol_roster">'.$patrol['name'].' ('.$patrol['patrol_count'].' boy'.($patrol['patrol_count']==1?'':'s').')</a>';
+				echo '</td></tr>';
+			}
+			echo '<tr><td><a href="membership.php?membership_view=Patrols&type='.$pt_name.'&group_id='.$group['id'].'&todo=create_patrol">[ Create '.$pt_name.' ]</a></td></tr>';
+		}
+	}
+	echo '<tr><td></td></tr>';
+	echo '</table></td><td valign=top style="padding-left: 25px;">';
+	
+	if ($_GET['todo'] == 'patrol_roster')
+	{
+		$sql = 'SELECT user.* FROM user, scout_patrol_member WHERE user.id = scout_patrol_member.user_id AND scout_patrol_member.patrol_id = '.$_GET['id'].' AND scout_troop_id = '.$troop_id;
+		$members = fetch_array_data($sql);
+		echo '<h2>'.$_GET['name'].' '.$_GET['type'].'</h2>';
+		
+		echo '<a href="membership.php?membership_view=Patrols&type='.$_GET['type'].'&group_id='.$_GET['group_id'].'&id='.$_GET['id'].'&name='.$_GET['name'].'&todo=edit_patrol">[ Update '.$_GET['name'].' '.$_GET['type'].' Name/Membership ]</a><br/><br/>';
+		
+		echo get_member_table($members, $troop_id, $group_name, $make_names_links = true, $show_blocked_users = false);
+	
+	}
+	else if ($_GET['todo'] == 'create_patrol' or $_GET['todo'] == 'edit_patrol')
+	{
+		$group_name = $troop_groups[$_GET['group_id']]['group_name'];
+		$text = "<form action=\"membership.php?membership_view=Patrols\" method=\"POST\" onsubmit=\"if (document.getElementById('target').value == 'delete_patrol') { return confirm('Are you sure you want to delete this ".$_GET['type']."?'); } else { return true; }\">";
+		$text .= "<input type=\"hidden\" name=\"target\" id=\"target\" value=\"add_edit_patrol\">";
+		if ($_GET['todo'] == 'edit_patrol')
+			$text .= "<input type=\"hidden\" name=\"patrol_id\" value=\"".$_GET['id']."\">";
+		$text .= "<input type=\"hidden\" name=\"patrol_type\" value=\"".$_GET['type']."\">";
+		$text .= "<input type=\"hidden\" name=\"group_id\" value=\"".$_GET['group_id']."\">";
+		
+		$text .= "<table class=\"scout_form\" cellpadding=\"10\" cellspacing=\"0\">\n";
+		$text .= "<tr><td colspan=\"2\" align=\"center\">".($_GET['todo'] == 'edit_patrol' ? 'Update' : 'Create')." ".$_GET['type']."<br/>".$group_name."</td></tr>\n";
+		
+		$text .= "<tr style=\"background: #DBE8E3;\"><td colspan=\"2\">";
+		  $text .= "<table cellpadding=\"3\" style=\"color: black; margin-left: 20px; margin-right: 20px\">";
+		  $text .= "<tr style=\"background: #DBE8E3;\"><td>".$_GET['type']." Name</td><td><input type=\"text\" name=\"patrol_name\"".($_GET['todo'] == 'edit_patrol' ? 'value="'.$_GET['name'].'"' : '')."></td></tr>";
+		  $text .= "</table>";
+		$text .= "</td></tr>";
+		
+		$sql = 'SELECT user.*, scout_patrol_member.patrol_id, scout_patrol.name AS patrol_name './/
+		       'FROM user_group, scout_group, user '. //scout_patrol,
+			   'LEFT JOIN (scout_patrol_member, scout_patrol) ON (user.id = scout_patrol_member.user_id AND scout_patrol_member.patrol_id = scout_patrol.id) '.
+			   'WHERE user.id = user_group.user_id'.
+               ' AND scout_group.id = '.$_GET['group_id'].
+			   ' AND troop_id = '.$troop_id.
+			   ' AND scout_group.id = user_group.group_id'.
+               ' AND user.state = \'Active\' '.
+			   ' AND user._scout = \'T\' '.
+			   //' AND (scout_patrol_member.patrol_id = scout_patrol.id OR scout_patrol_member.patrol_id IS NULL) '.
+			   'ORDER BY _administrator asc, _scoutmaster asc, _scout desc, name asc';
+			   
+		$users = fetch_array_data($sql, 'scouts');
+		
+		$text .= "<tr style=\"background: #DBE8E3;\"><td colspan=\"2\">";
+		$text .= "Select boys to assign to this patrol:<br/>";
+		
+		  $text .= '<table cellpadding=\"3\" style=\"color: black; margin-left: 20px; margin-right: 20px\">';
+		  $text .= "<tr><th></th><th style=\"color: black;\">Name</th><th style=\"color: black;\">Current ".$_GET['type']."</th></tr>";
+		
+		  $count = 0;
+		  foreach ($users as $user)
+		  {
+			$text .= "<tr style=\"background: #DBE8E3;\"><td><input type=\"checkbox\" name=\"user[".$count."]\" value=\"".$user['id']."\"";
+			if ($_GET['todo'] == 'edit_patrol' and $user['patrol_id'] == $_GET['id'])
+				$text .= "checked";
+			$text .= "></td>";
+			$text .= "<td style=\"color: black;\">".$user['name']."</td>";
+			$text .= "<td style=\"color: black;\">".$user['patrol_name']."</td></tr>";
+			$count++;
+		  }
+		  $text .= "</table>";
+		$text .= "</td></tr>";
+		$text .= "<tr><td><input type=\"submit\" onclick=\"document.getElementById('target').value='add_edit_patrol';\" value=\"".($_GET['todo'] == 'edit_patrol' ? 'Update' : 'Create')." Patrol\">";
+		if ($_GET['todo'] == 'edit_patrol')
+			$text .= "&nbsp;&nbsp;&nbsp;<input type=\"submit\" onclick=\"document.getElementById('target').value='delete_patrol';\" value=\"Delete ".$_GET['type']."\">";
+		$text .= "</td></tr>";
+		$text .= "</table>";
+		$text .= "</form>";
+		echo $text;
+	}
+	else
+	{
+		foreach ($troop_groups as $group)
+		{
+			echo '<h3>'.$group['group_name'].'</h3>';
+			$patrol_types = get_patrol_type_names($group['group_name']);
+			foreach ($patrol_types as $pt_name)
+			{
+				$sql = 'SELECT * FROM scout_patrol WHERE group_id = '.$group['id'].' AND scout_patrol.type = \''.$pt_name.'\'';
+				$patrols = fetch_array_data($sql,'scouts');
+				foreach ($patrols as $patrol)
+				{
+					echo '<div style="padding-left: 15px;"><h4>'.$patrol['name'].' '.$pt_name.'</h4>';
+					$sql = 'SELECT user.name FROM user, scout_patrol_member WHERE user.id = scout_patrol_member.user_id AND scout_patrol_member.patrol_id = '.$patrol['id'].' AND user.state = \'active\'';
+					$patrol_members = fetch_array_data($sql,'scouts','name');
+					$member_list = implode(', ',array_keys($patrol_members));
+					echo $member_list ."</div>\n";
+				}
+			}
+			
+			$sql = 'SELECT user.name FROM user_group, user LEFT JOIN scout_patrol_member ON scout_patrol_member.user_id = user.id WHERE user.id = user_group.user_id AND user_group.group_id = '.$group['id'].' AND patrol_id IS NULL AND _scout = \'T\' AND state = \'active\'';
+			$not_assigned = fetch_array_data($sql,'scouts','name');
+			if (count($not_assigned) > 0)
+			{
+				$member_list = implode(', ',array_keys($not_assigned));
+				echo '<div style="padding-left: 15px;"><h4>Not assigned to any '.implode(', ', $patrol_types).':</h4>';
+				echo $member_list ."</div>\n";
+			}
+		}
+	}
+	echo '</td></tr></table>';
+	
 }
 else
 {
